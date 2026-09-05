@@ -18,30 +18,344 @@ st.set_page_config(
 
 CUSTOM_CSS = """
 <style>
-#MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
-.block-container {padding-top: 2rem; padding-bottom: 3rem;}
+
+/* =========================================
+   GLOBAL DARK BACKGROUND
+   ========================================= */
+
+.stApp {
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(46, 134, 171, 0.18),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #07111F 0%,
+            #0B1726 45%,
+            #0F1F32 100%
+        );
+
+    color: #F1F5F9;
+}
+
+/* Main content */
+.block-container {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+/* =========================================
+   HIDE STREAMLIT DEFAULT UI
+   ========================================= */
+
+#MainMenu {
+    visibility: hidden;
+}
+
+footer {
+    visibility: hidden;
+}
+
+/* =========================================
+   SIDEBAR
+   ========================================= */
+
+[data-testid="stSidebar"] {
+    background:
+        linear-gradient(
+            180deg,
+            #050B14 0%,
+            #081321 50%,
+            #0B1B2E 100%
+        );
+
+    border-right: 1px solid #1E3A50;
+}
+
+[data-testid="stSidebar"] * {
+    color: #E5EEF5 !important;
+}
+
+/* =========================================
+   HERO SECTION
+   ========================================= */
+
 .hero {
-    background: linear-gradient(120deg, #0F3057 0%, #2E86AB 100%);
+    background:
+        linear-gradient(
+            120deg,
+            #081A2C 0%,
+            #0F3057 45%,
+            #145A78 100%
+        );
+
     padding: 2.2rem 2.5rem;
-    border-radius: 16px;
-    color: white;
+
+    border-radius: 18px;
+
+    color: #FFFFFF;
+
     margin-bottom: 1.5rem;
+
+    border: 1px solid #24506B;
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.35);
 }
-.hero h1 {margin: 0; font-size: 2.1rem;}
-.hero p {margin-top: 0.5rem; font-size: 1.02rem; opacity: 0.92; max-width: 780px;}
+
+.hero h1 {
+    margin: 0;
+    font-size: 2.1rem;
+    color: #FFFFFF;
+}
+
+.hero p {
+    margin-top: 0.5rem;
+    font-size: 1.02rem;
+    color: #D6E5EF;
+    opacity: 0.95;
+    max-width: 780px;
+}
+
+/* =========================================
+   BADGES
+   ========================================= */
+
 .badge {
-    display: inline-block; background: rgba(255,255,255,0.16); color: white;
-    padding: 3px 12px; border-radius: 999px; font-size: 0.78rem; margin-right: 6px;
-    margin-top: 10px; border: 1px solid rgba(255,255,255,0.35);
+    display: inline-block;
+
+    background: rgba(255,255,255,0.10);
+
+    color: #E8F6FF;
+
+    padding: 4px 12px;
+
+    border-radius: 999px;
+
+    font-size: 0.78rem;
+
+    margin-right: 6px;
+
+    margin-top: 10px;
+
+    border: 1px solid rgba(255,255,255,0.20);
 }
+
+/* =========================================
+   INFORMATION CARDS
+   ========================================= */
+
 .card {
-    background: #F4F7FA; border-radius: 14px; padding: 1.1rem 1.3rem;
-    border: 1px solid #E4EAF0; height: 100%;
+    background:
+        linear-gradient(
+            145deg,
+            #111F30,
+            #0D1928
+        );
+
+    border-radius: 16px;
+
+    padding: 1.2rem 1.4rem;
+
+    border: 1px solid #223B50;
+
+    height: 100%;
+
+    color: #DCE7EF;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 }
-.card h4 {margin-top: 0;}
+
+.card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 14px 35px rgba(0, 0, 0, 0.40);
+}
+
+.card h4 {
+    margin-top: 0;
+
+    color: #FFFFFF;
+}
+
+/* =========================================
+   TEXT
+   ========================================= */
+
+p, label, span {
+    color: #D7E2EA;
+}
+
+/* =========================================
+   DIVIDERS
+   ========================================= */
+
+hr {
+    border-color: #24394B !important;
+}
+
+/* =========================================
+   KPI / METRICS
+   ========================================= */
+
+[data-testid="stMetric"] {
+    background:
+        linear-gradient(
+            145deg,
+            #111F30,
+            #0D1928
+        );
+
+    padding: 14px;
+
+    border-radius: 14px;
+
+    border: 1px solid #223B50;
+
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+[data-testid="stMetricLabel"] {
+    color: #9FB5C5 !important;
+}
+
+[data-testid="stMetricValue"] {
+    color: #FFFFFF !important;
+}
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+
+.stButton > button {
+    background: #12324A;
+
+    color: #FFFFFF;
+
+    border: 1px solid #2E86AB;
+
+    border-radius: 10px;
+
+    font-weight: 600;
+}
+
+.stButton > button:hover {
+    background: #1B5F7A;
+
+    border-color: #4CA8D1;
+
+    color: #FFFFFF;
+}
+
+/* =========================================
+   SELECTBOX / INPUTS
+   ========================================= */
+
+[data-baseweb="select"] > div {
+    background: #111F30;
+
+    color: #FFFFFF;
+
+    border-radius: 10px;
+
+    border: 1px solid #29465B;
+}
+
+/* Text input */
+
+input {
+    background-color: #111F30 !important;
+
+    color: #FFFFFF !important;
+}
+
+/* =========================================
+   DATAFRAME
+   ========================================= */
+
+[data-testid="stDataFrame"] {
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    border: 1px solid #24394B;
+}
+
+/* =========================================
+   TABS
+   ========================================= */
+
+button[data-baseweb="tab"] {
+    color: #AFC2D0 !important;
+
+    font-weight: 600;
+}
+
+button[data-baseweb="tab"][aria-selected="true"] {
+    color: #FFFFFF !important;
+}
+
+/* =========================================
+   EXPANDERS
+   ========================================= */
+
+[data-testid="stExpander"] {
+    background: #0F1D2C;
+
+    border: 1px solid #24394B;
+
+    border-radius: 12px;
+}
+
+/* =========================================
+   CAPTIONS
+   ========================================= */
+
+.stCaption {
+    color: #8FA6B6 !important;
+}
+
+/* =========================================
+   SUCCESS / WARNING / ERROR BOXES
+   ========================================= */
+
+[data-testid="stAlert"] {
+    border-radius: 10px;
+}
+
+/* =========================================
+   SCROLLBAR
+   ========================================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #07111F;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #29465B;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2E86AB;
+}
+
 </style>
 """
+
 st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 
 # --------------------------------------------------------------------- init
